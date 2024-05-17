@@ -56,7 +56,7 @@ pipeline {
             script {
               docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                 def commitHash = env.GIT_COMMIT.take(7)
-                def dockerImage = docker.build("DSBhadoria/craftista:${commitHash}", "./voting")
+                def dockerImage = docker.build("dsbhadoria/craftista:${commitHash}", "./voting")
                 dockerImage.push()
                 dockerImage.push("latest")
                 dockerImage.push("dev")
